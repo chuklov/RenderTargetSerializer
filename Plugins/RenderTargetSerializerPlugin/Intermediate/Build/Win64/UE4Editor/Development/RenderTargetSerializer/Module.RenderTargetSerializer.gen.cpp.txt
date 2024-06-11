@@ -1,0 +1,11 @@
+F:\UnrealEngine\Projects\RTS_BP\Plugins\RenderTargetSerializer\Intermediate\Build\Win64\UE4Editor\Development\RenderTargetSerializer\Definitions.RenderTargetSerializer.h
+F:/UnrealEngine/Projects/RTS_BP/Plugins/RenderTargetSerializer/Intermediate/Build/Win64/UE4Editor/Inc/RenderTargetSerializer/RenderTargetSerializer.init.gen.cpp
+F:\UnrealEngine\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
+F:\UnrealEngine\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
+F:/UnrealEngine/Projects/RTS_BP/Plugins/RenderTargetSerializer/Intermediate/Build/Win64/UE4Editor/Inc/RenderTargetSerializer/RenderTargetSerializerBPLibrary.gen.cpp
+F:\UnrealEngine\Projects\RTS_BP\Plugins\RenderTargetSerializer\Source\RenderTargetSerializer/Public/RenderTargetSerializerBPLibrary.h
+F:\UnrealEngine\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/TextureRenderTarget2D.h
+F:\UnrealEngine\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/TextureRenderTarget.h
+F:\UnrealEngine\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\TextureRenderTarget.generated.h
+F:\UnrealEngine\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\TextureRenderTarget2D.generated.h
+F:\UnrealEngine\Projects\RTS_BP\Plugins\RenderTargetSerializer\Intermediate\Build\Win64\UE4Editor\Inc\RenderTargetSerializer\RenderTargetSerializerBPLibrary.generated.h

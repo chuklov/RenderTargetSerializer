@@ -1,0 +1,13 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-RenderTargetSerializer.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"F:\UnrealEngine\Projects\RTS_BP\Intermediate\Build\Win64\AlphaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+"F:\UnrealEngine\Projects\RTS_BP\Plugins\RenderTargetSerializer\Intermediate\Build\Win64\UE4Editor\Development\RenderTargetSerializer\Module.RenderTargetSerializer.cpp.obj"
+"F:\UnrealEngine\Projects\RTS_BP\Plugins\RenderTargetSerializer\Intermediate\Build\Win64\UE4Editor\Development\RenderTargetSerializer\Module.RenderTargetSerializer.gen.cpp.obj"
+"F:\UnrealEngine\Projects\RTS_BP\Plugins\RenderTargetSerializer\Intermediate\Build\Win64\UE4Editor\Development\RenderTargetSerializer\Default.rc2.res"
+/OUT:"F:\UnrealEngine\Projects\RTS_BP\Plugins\RenderTargetSerializer\Intermediate\Build\Win64\UE4Editor\Development\RenderTargetSerializer\UE4Editor-RenderTargetSerializer.lib"

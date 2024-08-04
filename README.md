@@ -1,5 +1,5 @@
 # RenderTargetSerializer
-Render Target Serializer for Unreal Engine 4.27 and above
+Render Target Serializer for Unreal Engine 4.27 
 
 Serialize render target into Vector
 ![image](https://github.com/chuklov/RenderTargetSerializer/assets/10007866/ec7517d4-8fb9-43df-a1ee-a81f6b14ef6b)

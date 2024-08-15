@@ -1,6 +1,5 @@
 /*
 	This code was written by Alexander Chadfield
-	(and modified by the devious bovid known as Aspen)
 	
 	Plugin created by Alexander Chadfield
 */

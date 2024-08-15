@@ -64,7 +64,7 @@ TArray<uint8> URenderTargetSerializerBPLibrary::SerializeRenderTarget(UTextureRe
             };
 
             // Add three channels into the vector
-            Channels.Append(Rgb, ARRAY_COUNT(Rgb));
+            Channels.Append(Rgb, sizeof(Rgb) / sizeof(Rgb[0]));
         }
     }
 

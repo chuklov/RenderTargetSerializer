@@ -11,6 +11,9 @@
 #include "Math/Vector.h"
 #include "Engine/TextureRenderTarget2D.h"
 #include "Engine/Texture2D.h"
+#include "UnrealClient.h"
+#include "RHITypes.h"
+#include "TextureResource.h"
 
 URenderTargetSerializerBPLibrary::URenderTargetSerializerBPLibrary(const FObjectInitializer& ObjectInitializer)
 : Super(ObjectInitializer)
@@ -73,7 +76,7 @@ UTexture2D* URenderTargetSerializerBPLibrary::DeserializeRenderTarget(const TArr
     }
 
     // Lock the texture for writing
-    FTexture2DMipMap& Mip = Texture2D->PlatformData->Mips[0];
+    FTexture2DMipMap& Mip = Texture2D->GetPlatformData()->Mips[0];
     void* Data = Mip.BulkData.Lock(LOCK_READ_WRITE);
 
     // Copy pixel data into the texture after converting to FColor

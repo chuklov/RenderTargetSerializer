@@ -28,11 +28,11 @@
 			"Type": "Executable"
 		},
 		{
-			"Path": "$(ProjectDir)/Plugins/RenderTargetSerializerPlugin/Binaries/Win64/UE4Editor-RenderTargetSerializer.dll",
+			"Path": "$(ProjectDir)/Plugins/RenderTargetSerializer/Binaries/Win64/UE4Editor-RenderTargetSerializer.dll",
 			"Type": "DynamicLibrary"
 		},
 		{
-			"Path": "$(ProjectDir)/Plugins/RenderTargetSerializerPlugin/Binaries/Win64/UE4Editor-RenderTargetSerializer.pdb",
+			"Path": "$(ProjectDir)/Plugins/RenderTargetSerializer/Binaries/Win64/UE4Editor-RenderTargetSerializer.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -2372,7 +2372,7 @@
 			"Type": "RequiredResource"
 		},
 		{
-			"Path": "$(ProjectDir)/Plugins/RenderTargetSerializerPlugin/Binaries/Win64/UE4Editor.modules",
+			"Path": "$(ProjectDir)/Plugins/RenderTargetSerializer/Binaries/Win64/UE4Editor.modules",
 			"Type": "RequiredResource"
 		},
 		{
@@ -2862,7 +2862,7 @@
 			"Type": "UFS"
 		},
 		{
-			"Path": "$(ProjectDir)/Plugins/RenderTargetSerializerPlugin/RenderTargetSerializer.uplugin",
+			"Path": "$(ProjectDir)/Plugins/RenderTargetSerializer/RenderTargetSerializer.uplugin",
 			"Type": "UFS"
 		},
 		{

@@ -1,0 +1,13 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.RenderTargetSerializer.cpp.obj": [
+			"RenderTargetSerializer.cpp.obj",
+			"RenderTargetSerializerBPLibrary.cpp.obj"
+		],
+		"Module.RenderTargetSerializer.gen.cpp.obj": [
+			"RenderTargetSerializer.init.gen.cpp.obj",
+			"RenderTargetSerializerBPLibrary.gen.cpp.obj"
+		]
+	}
+}

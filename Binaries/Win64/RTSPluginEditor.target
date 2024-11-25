@@ -28,6 +28,14 @@
 			"Type": "Executable"
 		},
 		{
+			"Path": "$(ProjectDir)/Plugins/RenderTargetSerializer/Binaries/Win64/UE4Editor-RenderTargetSerializer.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/RenderTargetSerializer/Binaries/Win64/UE4Editor-RenderTargetSerializer.pdb",
+			"Type": "SymbolFile"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/2D/Paper2D/Binaries/Win64/UE4Editor-Paper2D.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -2364,6 +2372,10 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(ProjectDir)/Plugins/RenderTargetSerializer/Binaries/Win64/UE4Editor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/2D/Paper2D/Binaries/Win64/UE4Editor.modules",
 			"Type": "RequiredResource"
 		},
@@ -2847,6 +2859,10 @@
 	"RuntimeDependencies": [
 		{
 			"Path": "$(ProjectDir)/RTSPlugin.uproject",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/RenderTargetSerializer/RenderTargetSerializer.uplugin",
 			"Type": "UFS"
 		},
 		{

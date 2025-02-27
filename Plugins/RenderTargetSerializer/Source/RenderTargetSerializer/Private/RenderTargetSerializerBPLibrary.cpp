@@ -38,7 +38,7 @@ TArray<uint8> URenderTargetSerializerBPLibrary::SerializeRenderTarget(UTextureRe
     // Read pixel data from the render target
     FRenderTarget* RenderTargetResource = RenderTarget->GameThread_GetRenderTargetResource();
     FReadSurfaceDataFlags ReadPixelFlags;
-    ReadPixelFlags.SetLinearToGamma(false); // Ensure no colour space conversion
+    ReadPixelFlags.SetLinearToGamma(true); // Ensure correct gamma
     RenderTargetResource->ReadPixels(PixelData, ReadPixelFlags);
 
     // Reserve memory for raw byte storage (4 bytes per pixel: R, G, B, A)

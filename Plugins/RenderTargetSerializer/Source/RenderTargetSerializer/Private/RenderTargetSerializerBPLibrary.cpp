@@ -41,14 +41,15 @@ TArray<uint8> URenderTargetSerializerBPLibrary::SerializeRenderTarget(UTextureRe
     ReadPixelFlags.SetLinearToGamma(false); // Ensure no colour space conversion
     RenderTargetResource->ReadPixels(PixelData, ReadPixelFlags);
 
-    // Reserve memory for raw byte storage (3 bytes per pixel: R, G, B)
-    PixelBytes.Reserve(Width * Height * 3);
+    // Reserve memory for raw byte storage (4 bytes per pixel: R, G, B, A)
+    PixelBytes.Reserve(Width * Height * 4);
 
     for (const FColor& PixelColor : PixelData)
     {
         PixelBytes.Add(PixelColor.R);
         PixelBytes.Add(PixelColor.G);
         PixelBytes.Add(PixelColor.B);
+        PixelBytes.Add(PixelColor.A);
     }
 
     return PixelBytes;
@@ -56,7 +57,7 @@ TArray<uint8> URenderTargetSerializerBPLibrary::SerializeRenderTarget(UTextureRe
 
 UTexture2D* URenderTargetSerializerBPLibrary::DeserializeRenderTarget(const TArray<uint8>& PixelBytes, int32 Width, int32 Height)
 {
-    if (Width <= 0 || Height <= 0 || PixelBytes.Num() != Width * Height * 3)
+    if (Width <= 0 || Height <= 0 || PixelBytes.Num() != Width * Height * 4)
     {
         return nullptr;
     }
@@ -79,12 +80,13 @@ UTexture2D* URenderTargetSerializerBPLibrary::DeserializeRenderTarget(const TArr
     FColor* ColorData = static_cast<FColor*>(Data);
     for (int32 Index = 0; Index < Width * Height; ++Index)
     {
-        int32 ByteIndex = Index * 3;
+        int32 ByteIndex = Index * 4;
         uint8 R = PixelBytes[ByteIndex];
         uint8 G = PixelBytes[ByteIndex + 1];
         uint8 B = PixelBytes[ByteIndex + 2];
+        uint8 A = PixelBytes[ByteIndex + 3];
 
-        ColorData[Index] = FColor(R, G, B, 255); // Add Alpha as 255
+        ColorData[Index] = FColor(R, G, B, A); 
     }
 
     // Unlock the texture

@@ -4,3 +4,8 @@
 /Intermediate
 /Content/StarterContent
 /Plugins/RenderTargetSerializer/Intermediate
+/Plugins/RenderTargetSerializer/Intermediate/Build
+/Plugins/RenderTargetSerializer/Intermediate/Build/Win64
+/Plugins/RenderTargetSerializer/Intermediate
+/Plugins/RenderTargetSerializer/Binaries
+/Binaries/Win64

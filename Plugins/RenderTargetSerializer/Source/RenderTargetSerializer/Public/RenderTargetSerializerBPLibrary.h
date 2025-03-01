@@ -37,4 +37,18 @@ public:
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Deserialize RT from Bytes to RGBA", Keywords = "Render Target Serializer v2"), Category = "Render Target Serialization")
 		static UTexture2D* DeserializeRenderTarget(const TArray<uint8>& PixelBytes, int32 Width, int32 Height);
+
+
+
+	/**
+	* Old method to store data in Vector
+	*/
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Serialize Render Target to Vector 3D", Keywords = "RenderTargetSerializer old"), Category = "Render Target Serialization")
+		static TArray<FVector> SerializeToVector(UTextureRenderTarget2D* RenderTarget);
+
+	/**
+	* Old Deserialize method to restore RT from Vector
+	*/
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Deserialize Vector 3D to Render Target", Keywords = "RenderTargetSerializer old"), Category = "Render Target Serialization")
+		static UTexture2D* DeserializeFromVector(const TArray<FVector>& PixelVectors, int32 Width, int32 Height);
 };

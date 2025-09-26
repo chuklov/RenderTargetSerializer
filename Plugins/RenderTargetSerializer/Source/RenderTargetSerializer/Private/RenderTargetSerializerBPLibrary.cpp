@@ -106,7 +106,6 @@ TArray<FVector> URenderTargetSerializerBPLibrary::SerializeToVector(UTextureRend
     TArray<FVector> PixelVectors;
 
 
-
     if (!RenderTarget)
     {
         return PixelVectors;
@@ -125,6 +124,7 @@ TArray<FVector> URenderTargetSerializerBPLibrary::SerializeToVector(UTextureRend
     FReadSurfaceDataFlags ReadPixelFlags;
     ReadPixelFlags.SetLinearToGamma(true); // Ensure gamma
     RenderTargetResource->ReadPixels(PixelData, ReadPixelFlags);
+ 
 
     for (int32 y = 0; y < Height; ++y)
     {
@@ -176,3 +176,117 @@ UTexture2D* URenderTargetSerializerBPLibrary::DeserializeFromVector(const TArray
     return Texture2D;
 
 }
+
+
+
+TArray<float> URenderTargetSerializerBPLibrary::SerializeFloat(UTextureRenderTarget2D* RenderTarget)
+{
+    TArray<float> PixelFloats;
+
+    if (!RenderTarget)
+    {
+        UE_LOG(LogTemp, Error, TEXT("SerializeFloat: RenderTarget is NULL!"));
+        return PixelFloats;
+    }
+
+    int32 Width = RenderTarget->SizeX;
+    int32 Height = RenderTarget->SizeY;
+
+    PixelFloats.SetNum(Width * Height * 4);
+
+    // Read pixel data
+    TArray<FColor> PixelData;
+    PixelData.Init(FColor::Black, Width * Height);
+
+    FRenderTarget* RenderTargetResource = RenderTarget->GameThread_GetRenderTargetResource();
+    FReadSurfaceDataFlags ReadPixelFlags;
+    ReadPixelFlags.SetLinearToGamma(true);
+    RenderTargetResource->ReadPixels(PixelData, ReadPixelFlags);
+
+    // Store pixels in a 1D array
+    for (int32 y = 0; y < Height; ++y)
+    {
+        for (int32 x = 0; x < Width; ++x)
+        {
+            int32 PixelIndex = (y * Width + x) * 4;
+            const FLinearColor& PixelColor = PixelData[y * Width + x];
+
+            PixelFloats[PixelIndex + 0] = PixelColor.R;
+            PixelFloats[PixelIndex + 1] = PixelColor.G;
+            PixelFloats[PixelIndex + 2] = PixelColor.B;
+            PixelFloats[PixelIndex + 3] = PixelColor.A;
+
+        }
+    }
+
+    return PixelFloats;
+}
+
+
+
+UTexture2D* URenderTargetSerializerBPLibrary::DeserializeFloat(const TArray<float>& PixelFloats, int32 Width, int32 Height)
+{
+    if (Width <= 0 || Height <= 0 || PixelFloats.Num() != Width * Height * 4)
+    {
+        UE_LOG(LogTemp, Error, TEXT("DeserializeFloat: Invalid input! Width=%d, Height=%d, PixelFloats.Num()=%d"), Width, Height, PixelFloats.Num());
+        return nullptr;
+    }
+
+    // Create a transient texture with floating-point precision
+    UTexture2D* Texture2D = UTexture2D::CreateTransient(Width, Height, PF_B8G8R8A8);
+    if (!Texture2D)
+    {
+        UE_LOG(LogTemp, Error, TEXT("DeserializeFloat: Failed to create transient texture!"));
+        return nullptr;
+    }
+
+    // Ensure PlatformData is allocated
+    Texture2D->PlatformData = new FTexturePlatformData();
+    Texture2D->PlatformData->SizeX = Width;
+    Texture2D->PlatformData->SizeY = Height;
+    Texture2D->PlatformData->PixelFormat = PF_B8G8R8A8;
+
+    // Create a new mip level
+    FTexture2DMipMap* Mip = new FTexture2DMipMap();
+    Texture2D->PlatformData->Mips.Add(Mip);
+    Mip->SizeX = Width;
+    Mip->SizeY = Height;
+    void* Data = Mip->BulkData.Lock(LOCK_READ_WRITE);
+
+    // Copy pixel data into the texture
+    FColor* ColorData = static_cast<FColor*>(Data);
+
+    // Populate the pixel data
+    for (int32 y = 0; y < Height; ++y)
+    {
+        for (int32 x = 0; x < Width; ++x)
+        {
+            int32 PixelIndex = (y * Width + x) * 4;
+            ColorData[y * Width + x] = FColor(
+                PixelFloats[PixelIndex + 0],
+                PixelFloats[PixelIndex + 1],
+                PixelFloats[PixelIndex + 2],
+                PixelFloats[PixelIndex + 3]
+            );
+
+            // Log first 10 pixels for debugging
+            if (PixelIndex < 40)
+            {
+                UE_LOG(LogTemp, Log, TEXT("Restoring Pixel[%d]: R=%f, G=%f, B=%f, A=%f"),
+                    PixelIndex / 4, PixelFloats[PixelIndex + 0], PixelFloats[PixelIndex + 1],
+                    PixelFloats[PixelIndex + 2], PixelFloats[PixelIndex + 3]);
+            }
+        }
+    }
+
+    Mip->BulkData.Unlock();
+    Texture2D->UpdateResource();
+
+    UE_LOG(LogTemp, Log, TEXT("DeserializeFloat: Texture successfully created!"));
+
+    return Texture2D;
+}
+
+
+
+

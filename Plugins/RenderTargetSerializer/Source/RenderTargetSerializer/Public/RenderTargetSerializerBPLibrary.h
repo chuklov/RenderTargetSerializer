@@ -51,4 +51,17 @@ public:
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Deserialize Vector 3D to Render Target", Keywords = "RenderTargetSerializer old"), Category = "Render Target Serialization")
 		static UTexture2D* DeserializeFromVector(const TArray<FVector>& PixelVectors, int32 Width, int32 Height);
+
+
+	/**
+	* Method to store data in Float Array
+	*/
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Serialize to Float", Keywords = "RenderTargetSerializer old"), Category = "Render Target Serialization")
+		static TArray<float> SerializeFloat(UTextureRenderTarget2D* RenderTarget);
+
+	/**
+	* Deserialize method to restore RT from Float Array
+	*/
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Deserialize from Float...", Keywords = "RenderTargetSerializer old"), Category = "Render Target Serialization")
+		static UTexture2D* DeserializeFloat(const TArray<float>& PixelVectors, int32 Width, int32 Height);
 };

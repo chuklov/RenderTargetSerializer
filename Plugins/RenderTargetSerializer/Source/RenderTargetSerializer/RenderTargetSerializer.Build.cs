@@ -27,5 +27,10 @@ public class RenderTargetSerializer : ModuleRules
 				"SlateCore",
 			}
 			);
+
+		if (Target.Platform != UnrealTargetPlatform.Linux && Target.Platform != UnrealTargetPlatform.Win32 && Target.Platform != UnrealTargetPlatform.Win64 && Target.Platform != UnrealTargetPlatform.Mac)
+        {
+            PrecompileForTargets = PrecompileTargetsType.None;
+        }
 	}
 }
